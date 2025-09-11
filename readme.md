@@ -1,3 +1,3 @@
 # PYTHON CUCUMBER SELENIUM
 
-en curso... (por mientras ver el readme 3:pruebas
+en curso... (por mientras ver el readme 03-selenium.md
