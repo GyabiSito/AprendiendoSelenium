@@ -12,7 +12,7 @@ t = 1
 
 service = Service(r"C:\Drivers\chromedriver-win64\chromedriver.exe")
 driver = webdriver.Chrome(service=service)
-driver.get("file:///C:/Users/Josec/OneDrive/Escritorio/Selenium/03-Pruebas/select.html")
+driver.get("file:///C:/Users/Josec/OneDrive/Escritorio/Selenium/02-Pruebas/select.html")
 driver.maximize_window()
 select1 = driver.find_element(by="xpath", value="//select[contains(@id,'select-demo')]")
 dias = Select(select1)

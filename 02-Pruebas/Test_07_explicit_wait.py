@@ -11,7 +11,7 @@ t=1
 
 service = Service(r"C:\Drivers\chromedriver-win64\chromedriver.exe")
 driver = webdriver.Chrome(service=service)
-driver.get("file:///C:/Users/Josec/OneDrive/Escritorio/Selenium/03-Pruebas/modal.html")
+driver.get("file:///C:/Users/Josec/OneDrive/Escritorio/Selenium/02-Pruebas/modal.html")
 driver.maximize_window()
 driver.implicitly_wait(15)
 #Explicit wait, vamos a esperar un elemento y, cuando salga, vamos a accionar ciertas cosas
