@@ -1,4 +1,4 @@
-# 🧪as Selenium Testing en Python — Guía Completa
+# 🧪 Selenium Testing en Python — Guía Completa
 
 Bienvenido a este repositorio donde se documentan todas las prácticas y herramientas necesarias para automatizar pruebas
 web usando **Python + Selenium**. Vas a encontrar desde lo más básico hasta patrones avanzados como **Page Object Model
