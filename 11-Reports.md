@@ -1,85 +1,115 @@
- pip install pytest-html
- 
+## Generación de Reportes en Pytest
 
- pytest .\Fixture.py --html=ReporteFixture.html
- 
-Allure:
+Este proyecto utiliza dos opciones para generar reportes automáticos de tests:
 
+1. [`pytest-html`](https://github.com/pytest-dev/pytest-html) — genera un reporte HTML simple.
+2. [`Allure`](https://docs.qameta.io/allure/) — genera reportes interactivos y visualmente más completos.
+
+---
+
+## ✅ Requisitos previos
+
+* Python 3.7+
+* Pip
+* Pytest instalado (`pip install pytest`)
+* Tener agregado el ejecutable de Allure en tu `PATH` (explicado más abajo)
+
+---
+
+## 1. Reporte HTML con `pytest-html`
+
+### 🛠️ Instalación
+
+```bash
+pip install pytest-html
+```
+
+### ▶️ Ejecución
+
+```bash
+pytest .\Fixture.py --html=ReporteFixture.html
+```
+
+Esto genera un archivo `ReporteFixture.html` en el mismo directorio.
+
+---
+
+## 2. Reportes con Allure (más visuales e interactivos)
+
+### 🛠️ Instalación
+
+```bash
 pip install allure-pytest
+```
 
-https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.9/
+### 📦 Instalación del binario de Allure (Commandline)
 
-descargar el .zip y ponerlo en el path
+1. Descargá la versión de Allure desde Maven:
+   [Allure Commandline 2.13.9 (ZIP)](https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.9/allure-commandline-2.13.9.zip)
 
-Microsoft Windows [Versión 10.0.26100.3194]
-(c) Microsoft Corporation. Todos los derechos reservados.
+2. Descomprimí el `.zip` en alguna carpeta, por ejemplo:
+   `C:\Tools\Allure\`
 
-C:\Users\Josec>allure
-Usage: allure [options] [command] [command options]
-  Options:
-    --help
-      Print commandline help.
-    -q, --quiet
-      Switch on the quiet mode.
-      Default: false
-    -v, --verbose
-      Switch on the verbose mode.
-      Default: false
-    --version
-      Print commandline version.
-      Default: false
-  Commands:
-    generate      Generate the report
-      Usage: generate [options] The directories with allure results
-        Options:
-          -c, --clean
-            Clean Allure report directory before generating a new one.
-            Default: false
-          --config
-            Allure commandline config path. If specified overrides values from
-            --profile and --configDirectory.
-          --configDirectory
-            Allure commandline configurations directory. By default uses
-            ALLURE_HOME directory.
-          --profile
-            Allure commandline configuration profile.
-          -o, --report-dir, --output
-            The directory to generate Allure report into.
-            Default: allure-report
+3. Agregá la ruta a la carpeta `/bin` al `PATH` de tu sistema.
+   Ejemplo:
+   `C:\Tools\Allure\bin`
 
-    serve      Serve the report
-      Usage: serve [options] The directories with allure results
-        Options:
-          --config
-            Allure commandline config path. If specified overrides values from
-            --profile and --configDirectory.
-          --configDirectory
-            Allure commandline configurations directory. By default uses
-            ALLURE_HOME directory.
-          -h, --host
-            This host will be used to start web server for the report.
-          -p, --port
-            This port will be used to start web server for the report.
-            Default: 0
-          --profile
-            Allure commandline configuration profile.
+4. Verificá que funcione:
 
-    open      Open generated report
-      Usage: open [options] The report directory
-        Options:
-          -h, --host
-            This host will be used to start web server for the report.
-          -p, --port
-            This port will be used to start web server for the report.
-            Default: 0
+```bash
+allure --version
+```
 
-    plugin      Generate the report
-      Usage: plugin [options]
-        Options:
-          --config
-            Allure commandline config path. If specified overrides values from
-            --profile and --configDirectory.
-          --configDirectory
-            Allure commandline configurations directory. By default uses
-            ALLURE_HOME directory.
-          --profile
+---
+
+### ▶️ Ejecución
+
+#### Paso 1: Ejecutar los tests con Allure activado
+
+```bash
+pytest .\Fixture.py --alluredir=allure-results
+```
+
+Esto guarda los resultados "crudos" en la carpeta `allure-results`.
+
+#### Paso 2: Generar el reporte
+
+```bash
+allure generate allure-results --clean -o allure-report
+```
+
+Esto genera un reporte estático en la carpeta `allure-report`.
+
+#### Paso 3 (opcional): Servir el reporte en localhost
+
+```bash
+allure serve allure-results
+```
+
+Esto levanta un servidor local y abre el reporte en el navegador. Ideal para ver el resultado rápido y visualmente.
+
+---
+
+## 📁 Estructura esperada
+
+```
+/tests
+  Fixture.py
+  ...
+/allure-results        <-- Se genera automáticamente
+/allure-report         <-- Se genera con allure generate
+ReporteFixture.html    <-- Si usás pytest-html
+```
+
+---
+
+## 📌 Notas
+
+* `--clean` elimina el contenido anterior del reporte antes de generar uno nuevo.
+* Si necesitás cambiar el puerto o host del `allure serve`, podés usar `--port` y `--host`.
+
+```bash
+allure serve allure-results --port 8080
+```
+
+---
