@@ -61,5 +61,3 @@ driver.close()
 * Asegurate que la versión del driver coincida con la del navegador que tenés instalado.
 
 ---
-
-¿Querés que te agregue un ejemplo interactuando con el DOM (inputs, botones, etc)?

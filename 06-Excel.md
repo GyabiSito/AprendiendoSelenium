@@ -99,4 +99,4 @@ fe.writeData(ruta, "Hoja 1", 2, 5, "OK")
   pip install openpyxl
   ```
 * Es recomendable manejar rutas absolutas o relativas con `pathlib`.
-* Esta clase puede integrarse con pruebas `unittest` o `pytest` para leer datos dinámicamente desde Excel.
+* Puede integrarse con pruebas `unittest` o `pytest` para leer datos dinámicamente desde Excel.
