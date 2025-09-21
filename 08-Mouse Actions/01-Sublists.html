@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Hover Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu > li {
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            background: #3498db;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .menu li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li:hover > ul {
+            display: block;
+        }
+
+        .menu li ul li ul {
+            left: 100%;
+            top: 0;
+        }
+
+        .menu li a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="menu">
+    <li>
+        <a href="#" id="menu_admin_viewAdminModule">Admin</a>
+        <ul>
+            <li>
+                <a href="#" id="menu_admin_viewUserManagment">User Management</a>
+                <ul>
+                    <li>
+                        <a href="#" id="menu_admin_viewSystemUsers">System Users</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    document.getElementById("menu_admin_viewSystemUsers").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.innerHTML = "<h1>Bienvenido a System Users 🎉</h1>";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Right Click Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    #target {
+      width: 250px;
+      height: 120px;
+      background-color: #8e44ad;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: context-menu;
+      user-select: none;
+    }
+
+    #target.right-clicked {
+      background-color: #f39c12;
+    }
+  </style>
+</head>
+<body>
+
+<div id="target">Click derecho acá 🖱️</div>
+
+<script>
+  const target = document.getElementById("target");
+
+  target.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    target.textContent = "¡Click derecho detectado!";
+    target.classList.add("right-clicked");
+  });
+</script>
+
+</body>
+</html>

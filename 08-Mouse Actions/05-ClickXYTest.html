@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click XY Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    #canvas {
+      width: 400px;
+      height: 250px;
+      border: 3px solid #3498db;
+      position: relative;
+      user-select: none;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: red;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+
+<h2>Haz click en coordenadas específicas</h2>
+<div id="canvas"></div>
+
+<script>
+  const canvas = document.getElementById("canvas");
+
+  canvas.addEventListener("click", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.style.left = `${x}px`;
+    dot.style.top = `${y}px`;
+    canvas.appendChild(dot);
+
+    console.log(`Click en X:${x}, Y:${y}`);
+  });
+</script>
+
+</body>
+</html>

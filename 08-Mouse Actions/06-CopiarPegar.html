@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy & Paste Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 300px;
+      font-size: 16px;
+      border: 2px solid #3498db;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Prueba de copiar y pegar</h2>
+
+<label for="source">Texto original:</label><br>
+<input type="text" id="source" value="Texto para copiar"><br>
+
+<label for="target">Texto pegado:</label><br>
+<input type="text" id="target" placeholder="Pegá aquí con Ctrl+V">
+
+<script>
+  // Opcional: mostrar en consola si se pega algo
+  document.getElementById("target").addEventListener("input", function () {
+    console.log("Texto pegado:", this.value);
+  });
+</script>
+
+</body>
+</html>
